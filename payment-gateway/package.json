@@ -1,0 +1,22 @@
+{
+  "name": "payment-gateway",
+  "version": "1.0.0",
+  "description": "payment-gateway-backend for vsounds client",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dennis Tomno",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.5.0",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "paypal-rest-sdk": "^1.8.1",
+    "stripe": "^11.12.0"
+  }
+}

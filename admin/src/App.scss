@@ -1,0 +1,564 @@
+@import url("https://fonts.googleapis.com/css?family=ABeeZee");
+
+$gray: #cccaca;
+$green: #159943;
+$lgreen: #1DB954;
+$black: #141414;
+$lwhite: #f1f0f0;
+$darkblue: #314253;
+$orange: #fc9b2c;
+
+.not-found {
+    text-align: center;
+    h1 {color: red;}
+    margin-bottom: 100px;
+}
+
+select {
+    width: 500px;
+    height: 50px;
+    background-color: $darkblue;
+    color: white;
+    font-size: 18px;
+    font-family: 'ABeeZee';
+    outline: white solid 1px;
+    &:focus {outline: $lgreen solid 1px;}
+    @media (hover: hover) {cursor: pointer;}
+    border: none;
+    border-radius: 5px;
+    display: block;
+} 
+
+.dropdown-icon {
+    border: none;
+    @media (hover:hover) {
+        &:hover {background-color: $lgreen !important;}
+    }
+    @media (hover:none) {
+        &:active {
+            background: $lgreen radial-gradient(circle, transparent 1%, $lgreen 1%) center/15000% !important;
+            background-size: 100% !important;
+        }
+    }
+}
+
+.dropdown-item {
+    color: white !important; 
+    @media (hover:hover) {
+        &:hover {background-color: $darkblue !important; color: $lwhite !important;}
+    }
+    @media (hover:none) {
+        &:active {
+            color: $lwhite !important;
+            background: $darkblue radial-gradient(circle, transparent 1%, $darkblue 1%) center/15000% !important;
+            background-size: 100% !important;
+        }
+    }
+}
+
+.dropdown-item-disable {
+    color: #e6e6e6 !important; 
+    @media (hover:hover) {
+        &:hover {background-color: $darkblue !important;}
+    }
+    @media (hover:none) {
+        &:active {
+            background: $darkblue radial-gradient(circle, transparent 1%, $darkblue 1%) center/15000% !important;
+            background-size: 100% !important;
+        }
+    }
+}
+
+#title-decoration {height: 3px; width: 60px; background-color: $green; margin-bottom: 10px;}
+
+h3 {margin-bottom: 20px;}
+
+.error-box {
+    color: red; 
+    display: flex; 
+    justify-content: center; 
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+
+@mixin submitButton($width, $marginLeftRight) {
+    color: white;
+    text-decoration: none;
+    border: none;
+    outline: white solid 1px;
+    font-size: 20px;
+    width: $width;
+    height: 50px;
+    background-color: $green;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    justify-content: center;
+    margin: 0 $marginLeftRight;
+    &:disabled { 
+        opacity: 0.8;
+        @media (hover:hover) {
+            &:hover {background-color: $green; cursor: auto;}
+        }
+        @media (hover:none) {
+            &:active {
+                background: $green radial-gradient(circle, transparent 1%, $green 1%) center/15000%;;
+                background-size: 100%;
+            }
+        }
+    }
+    @media (hover:hover) {
+        &:hover {background-color: $darkblue; cursor: pointer;}
+    }
+    @media (hover:none) {
+        &:active {
+            background: $darkblue radial-gradient(circle, transparent 1%, $darkblue 1%) center/15000%;;
+            background-size: 100%;
+        }
+    }
+}
+
+@mixin inputBox() {
+    border: none;
+    border-radius: inherit;
+    outline: none; 
+    height: 50px;
+    width: 100%; 
+    font-size: 18px;
+    padding: 5px;
+    background-color: white;
+}
+
+.Mui-disabled {
+    color: #adabab !important;
+}
+
+.buttons {@include submitButton(100%, 0)}
+
+.product-table-btn, .product-table-link {
+    color: white;
+    text-decoration: none;
+    border: none;
+    outline: white solid 1px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: $green;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    justify-content: center;
+    margin-right: 20px;
+    &:disabled { 
+        opacity: 0.8;
+        @media (hover:hover) {
+            &:hover {background-color: $green; cursor: auto;}
+        }
+        @media (hover:none) {
+            &:active {
+                background: $green radial-gradient(circle, transparent 1%, $green 1%) center/15000%;;
+                background-size: 100%;
+            }
+        }
+    }
+    @media (hover:hover) {
+        &:hover {background-color: $darkblue; cursor: pointer; color: white;}
+    }
+    @media (hover:none) {
+        &:active {
+            background: $darkblue radial-gradient(circle, transparent 1%, $darkblue 1%) center/15000%;;
+            background-size: 100%;
+            color: white;
+        }
+    }
+}
+
+.product-table-link {
+    padding: 1px 5px;
+}
+
+#submit-button {@include submitButton(500px, auto);}
+
+.input {
+    &:focus-within {
+        outline: $lgreen solid 1px;
+    }
+    outline: white solid 1px;
+    width: 500px;
+    background-color: $darkblue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    .fa-regular{color: $lgreen; margin-right: 10px;}
+    .fa-solid {color: $lgreen; margin: 0 5px;}
+    input {@include inputBox(); background-color: $darkblue; color: white;}
+    #toggle-password {cursor: pointer;}
+    .label {color: $gray;}
+}
+
+body{
+    background-color: $black !important;
+    color: white !important;
+    font-family: 'ABeeZee', Arial, Helvetica, sans-serif !important;
+    padding: 0px 20px;
+}
+
+#logo {
+    display: flex; 
+    align-items: center; 
+}
+
+#Nav {
+    #navbar {
+        position:fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0 20px;
+        border-bottom: 1px solid $green;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $black;
+        margin-bottom: 20px;
+        #menu {
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            .button {
+                margin-left: 10px; 
+                font-size: 22px; 
+                color: white; 
+                background-color: $black;
+                text-decoration: none;
+                @media (hover:hover) {&:hover {color: $lgreen; cursor: pointer;}}
+                @media (hover:none) {&:active {color: $lgreen;}}
+            }
+        }
+    }
+    #space { margin-bottom: 120px;}
+}
+
+#home {
+    margin-bottom: 40px;
+    .content {
+        display: flex;
+        .overviews {
+            display: flex;
+            flex-direction: column;
+            width: 61%;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            border: 1px solid $gray;
+            height: fit-content;
+            border-radius: 5px;
+            padding: 10px;
+            .apexcharts-tooltip { color: $black;}
+            .apexcharts-menu { 
+                color: $black;
+                .apexcharts-menu-item {
+                    @media (hover:hover){
+                        &:hover {background-color: $green; color: white;}
+                    }
+                }
+            }
+            .monthly-overview { margin-bottom: 10px;}
+            .overview, .monthly-overview {
+                display: flex;
+                flex-direction: column;
+                background-color: $darkblue;
+                margin-bottom: 40px;
+                padding: 10px;
+                border-radius: 5px;
+                .info { color: $gray;}
+                .categories {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .category {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        .title, .value {margin: 0;}
+                        .title { color: $gray; font-size: 14px;}
+                        .value { font-size: 18px;}
+                        .percent { color: $lgreen;}
+                        .icon {
+                            border-radius: 50%; 
+                            margin-right: 10px; 
+                            background-color: $lgreen;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center; 
+                            width: 50px; 
+                            padding: 10px; 
+                            height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        .inventory-and-recent {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            border: 1px solid $gray;
+            height: fit-content;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 10px;
+            .inventory {
+                display: block;
+                background-color: $darkblue;
+                border-radius: 5px;
+                .guitars, .accessories {
+                    padding: 10px;
+                    display: flex;
+                    overflow: hidden;
+                    justify-content: center;
+                }
+            }
+            .recent .orders {
+                border-radius: 5px;
+                margin-bottom: 20px;
+                .order {
+                    display: flex;
+                    border-radius: inherit;
+                    padding: 10px;
+                    align-items: center;
+                    .name, .amt, .time { 
+                        margin: 0;
+                        width: 33.33%; 
+                        font-size: 14px;
+                        text-overflow: ellipsis;
+                        text-align: left;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        margin-right: 5px;
+                    }
+                    background-color: $darkblue;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+#login, #signup, #reset-password {
+    h2 {text-align: center;}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    .google-btn {
+        background-color: $green;
+        color: white;
+        width: 500px;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        transition: 0.5s;
+        border: none;
+        outline: white solid 1px;
+        i {margin-right: 10px;}
+        &:disabled { 
+            opacity: 0.8;
+            @media (hover:hover) {
+                &:hover {background-color: $green; cursor: auto;}
+            }
+            @media (hover:none) {
+                &:active {
+                    background: $green radial-gradient(circle, transparent 1%, $green 1%) center/15000%;;
+                    background-size: 100%;
+                }
+            }
+        }
+        @media (hover:hover) {&:hover {cursor: pointer; background-color: $darkblue;}}
+        @media (hover:none) {
+            &:active {
+                background: $darkblue radial-gradient(circle, transparent 1%, $darkblue 1%) center/15000%;;
+                background-size: 100%;
+            }
+        }
+    }
+    #login-form, #signup-form, #reset-password-form {
+        #reset-password {color: $orange; width: fit-content; margin: 0 auto; margin-bottom: 10px; }
+        #reset-password, #to-login-signup {text-align: center;}
+        .to-login-signup {color: $orange; margin-left: 5px; }
+    }
+}
+
+#add-product, #update-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2, h4 {margin-bottom: 30px;}
+    #product-form {
+        #types, #category {margin-bottom: 20px;}
+        margin-bottom: 20px;
+        #modify-groups {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            @media (hover:hover) {.fa-solid:hover {color: $lgreen; cursor: pointer;}}
+        }
+        #image-color {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            justify-content: space-between;
+            width: 500px;
+            align-items: center;
+            #product-img, #product-color {width: 100%; margin-bottom: 10px;}
+            #product-color {input {border: none; width: 100%; outline: none;}}
+        }
+    }
+    #submit-button {margin-bottom: 20px;}
+    textarea {background-color: $darkblue; color: white; padding: 0 5px; width: 100%; font-size: 18px; border: none; height: 100px; outline: none;}
+}
+
+#order {
+    .order-card {
+        display: none;
+        font-size: 14px;
+        .desc { 
+            margin: 10px 0;
+            * {display: inline;}
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .desc2 {
+            margin-bottom: 40px;
+            p {
+                overflow: hidden;
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+    .products {
+        display: grid;
+        font-size: 15px;
+        padding: 5px 10px;
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        font-weight: bold;
+    }
+    .content {
+        cursor: default; 
+        font-weight: normal;
+        word-wrap: break-word; 
+        font-size: 14px;
+        padding: 20px 10px;
+        .desc {
+            display: flex;
+            align-items: flex-start;
+            img {margin-right: 30px;}
+            .text { display: flex; flex-direction: column; align-items: flex-start; margin-right: 30px;}
+        }
+    }
+}
+
+#admin-profile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    h2, #toggle-password-change {display: flex; justify-content: center;}
+    #avatar {
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: fit-content;
+        border-radius: 50%;
+        img {object-fit: cover; height: 100px; width: 100px; border-radius: inherit;}
+    }
+    #toggle-password-change {
+        width: fit-content; 
+        color: $orange; 
+        @media (hover:hover) {&:hover {color: white; cursor: pointer;}}
+        @media (hover:none) {&:active {color: white;}}
+        margin: 0 auto;
+        margin-bottom: 10px; 
+    }
+}
+
+#Footers {
+    #footer {p{text-align: center;} margin-bottom: 20px;}
+}
+
+@media screen and (max-width: 980px){
+    #home .content {
+        flex-direction: column;
+        .inventory-and-recent { order: 1;}
+        .overviews { order: 2; width: 100%;}
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #home .content .overviews {
+        .monthly-overview, .overview {
+            .categories {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    }
+    #home .content {
+        .inventory-and-recent .inventory {
+            .guitars, .accessories { svg{height: fit-content; width: 100%;}}
+        }
+    }
+    #order {
+        .order-card {display: block;}
+        .products {display: none;}
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #home .content {
+        .inventory-and-recent, .overviews {
+            border: none;
+            padding: 0;
+        }
+    }
+}
+
+
+@media screen and (max-width:659px) {
+    #Nav {
+        #navbar {
+            #main {
+                #menu {
+                    .button{
+                        font-size: 20px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+    h3{font-size: 20px;}
+    #logo img {height: 40px; width: 90px;}
+    #Nav #navbar #menu #my-dropdown .dropdown-icon{ background-color: transparent !important; padding: 0; border: none;}
+    .label {display: flex; justify-content: flex-start; margin: 0; width: 100% !important;}
+    #submit-button, .buttons, .input-dropdown, button { margin: 0; height: 40px; width: 100% !important; font-size: 18px !important;}
+    .product-table-btn, .product-link-btn { font-size: 14px !important; height: auto !important; }
+    .input input, .google-btn { font-size: 16px !important; height: 40px !important;}
+    .input, form, select { width: 100% !important;}
+    #add-product #product-form, #update-product #product-form {
+        #product-name, #product-brand, select, #product-img, #product-color, #product-price, #product-stock {
+            height: 40px !important;
+        }
+        #product-img, #product-color { input {height: inherit;}}
+        #image-color { width: 100% !important; justify-content: space-between !important;}
+    }
+}
