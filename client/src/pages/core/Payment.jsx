@@ -102,7 +102,7 @@ export const Payment = () => {
                             <div style={{marginTop:'30px'}}></div>
                                 {
                                     cart.map((value,index)=> {
-                                        return <div key={value.name} id="cart-card" style={{margin:'0',borderRadius:'0px'}}>
+                                        return <div key={value.name+value.imageurl_and_colors['color']} id="cart-card" style={{margin:'0',borderRadius:'0px'}}>
                                             <div id="product-image">
                                                 <img style={{objectFit:'cover'}} src={value.imageurl_and_colors.img} alt={value.name}/>
                                             </div>

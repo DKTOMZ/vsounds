@@ -17,7 +17,7 @@ export const Cart = () => {
                             <h2>Your shopping basket</h2>
                         {
                                 cart.map((value,index)=> {
-                                    return <div key={value.name} id="cart-card">
+                                    return <div key={value.name+value.imageurl_and_colors['color']} id="cart-card">
                                         <i id="remove-card" onClick={()=>dispatch(removeFromCart(index))} className="fa-solid fa-xmark fa-lg"></i>
                                         <div id="product-image">
                                             <img style={{objectFit:'cover'}} src={value.imageurl_and_colors.img} alt={value.name}/>

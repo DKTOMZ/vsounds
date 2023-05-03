@@ -23,7 +23,7 @@ export const Product = () => {
     
     useEffect(()=>{loadData();},[appData,query]);
 
-    useEffect(()=>{checkCart();},[cart]);
+    useEffect(()=>{checkCart();},[cart,activeImgColor]);
 
     const loadData = () => {
         if (appData) {
@@ -43,8 +43,11 @@ export const Product = () => {
     };
 
     const checkCart = () => {
+        setItemExists(false);
         cart.forEach((value,index)=>{
-            if (value.name === product.name) {return setItemExists(true);}
+            if (value.name === product.name){
+                if (value.imageurl_and_colors['color'] === activeImgColor['color']) {return setItemExists(true);}
+            }
         });
     };
 
