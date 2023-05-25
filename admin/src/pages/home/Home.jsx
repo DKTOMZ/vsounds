@@ -38,8 +38,10 @@ const getTimeDiff = (timestamp) => {
 };
 
 export const Home = () => {
-    const totalUsers = useSelector(state=>state.users);
+    const users = {};
     const orders = useSelector(state=>state.orders);
+    orders.forEach((order)=>users[order.userId]=order.userId);
+    const totalUsers = Object.keys(users).length;
     //const products = useSelector(state=>state.products);
 
     const monthProductsSold = orders.filter((order)=>new Date(order.timestamp).getMonth()===new Date(Date.now()).getMonth()).reduce((total,order)=>total+order.products.length,0);

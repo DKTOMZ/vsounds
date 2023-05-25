@@ -21,10 +21,7 @@ export const AuthProvider = ({children}) => {
         try {
             user =  await createUserWithEmailAndPassword(auth,email,password);
             await signOut(auth);
-            const addResponse = await addUser({uid : user.user.uid});
-            if (addResponse) {
-                return {error:'Something went wrong. Try again'};
-            }
+            await addUser({uid : user.user.uid});
             await sendEmailVerification(user.user);
             return {verifyEmail:'Please check email/spam folder to verify your account then login'};
         } catch (error) {

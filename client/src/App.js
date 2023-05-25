@@ -30,8 +30,7 @@ const ProtectedRoute = ({ children, props }) => {
 
 const UnprotectedRoute = ({ children }) => {
     const {state} = useLocation();
-    const {currentUser} = useAuth();
-    if (currentUser && !state) { return <Navigate to='/' replace/>}
+    if (state) { return <Navigate to={state.route} replace/>}
     return children;
 };
 

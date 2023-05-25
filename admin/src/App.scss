@@ -122,7 +122,6 @@ h3 {margin-bottom: 20px;}
 
 @mixin inputBox() {
     border: none;
-    border-radius: inherit;
     outline: none; 
     height: 50px;
     width: 100%; 
@@ -191,8 +190,8 @@ h3 {margin-bottom: 20px;}
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    .fa-regular{color: $lgreen; margin-right: 10px;}
-    .fa-solid {color: $lgreen; margin: 0 5px;}
+    .fa-regular{color: $lgreen; margin: 0 5px;}
+    .fa-solid {color: $lgreen; margin: 0 10px;}
     input {@include inputBox(); background-color: $darkblue; color: white;}
     #toggle-password {cursor: pointer;}
     .label {color: $gray;}
