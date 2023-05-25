@@ -184,7 +184,7 @@ const createOrder = async(customer,data) => {
 const handleOrder = async(data) => {
   try {
     const customer = await stripe.customers.retrieve(data.customer);
-    await createOrder();
+    await createOrder(customer,data);
     sendOrderEmail(data,customer);
     await updateStock();
   } catch (err) {
@@ -269,9 +269,10 @@ app.post('/stripewebhook', express.raw({type: 'application/json'}), (request, re
     handleOrder(data)
     .then((value)=>{
       if(value) { return response.status(500).json({"error":"Failed to create order"})}
-    })
-    .finally(()=>response.status(200).json({received:true}));
+    });
   }
+  return response.status(200).json({received:true});
+
 });
 
 //Stripe checkout
