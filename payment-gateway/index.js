@@ -181,6 +181,17 @@ const createOrder = async(customer,data) => {
 
 };
 
+const handleOrder = async(data) => {
+  try {
+    const customer = await stripe.customers.retrieve(data.customer);
+    await createOrder();
+    sendOrderEmail(data,customer);
+    await updateStock();
+  } catch (err) {
+    return {error:err};
+  }
+};
+
 //Paypal
 /*
 const paypal = require('paypal-rest-sdk');
@@ -255,16 +266,12 @@ app.post('/stripewebhook', express.raw({type: 'application/json'}), (request, re
   eventType = event.type;
 
   if (eventType === 'checkout.session.completed') {
-    stripe.customers.retrieve(data.customer).then(
-      (customer)=>{
-        createOrder(customer,data).then(()=>sendOrderEmail(data,customer));
-        updateStock();
-      }
-      ).catch((err)=>{return {error:err}});
+    handleOrder(data)
+    .then((value)=>{
+      if(value) { return response.status(500).json({"error":"Failed to create order"})}
+    })
+    .finally(()=>response.status(200).json({received:true}));
   }
-
-  // Return a 200 response to acknowledge receipt of the event
-  response.status(200).json({received:true});
 });
 
 //Stripe checkout
