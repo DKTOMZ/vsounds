@@ -24,13 +24,12 @@ import { Warranty } from "./pages/Warranty";
 
 const ProtectedRoute = ({ children, props }) => {
     const {currentUser} = useAuth();
-    if (!currentUser) {return <Navigate to='/Login' replace state={{route:props.initial}}/>}
+    const route  = {route:props.initial};
+    if (!currentUser) {return <Navigate to='/Login' state={route} replace />}
     return children;
 };
-
+ 
 const UnprotectedRoute = ({ children }) => {
-    const {state} = useLocation();
-    if (state) { return <Navigate to={state.route} replace/>}
     return children;
 };
 

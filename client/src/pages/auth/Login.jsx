@@ -1,6 +1,6 @@
 import { CSpinner } from "@coreui/react";
 import React, { useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ErrorBox } from "../utilities/Error";
 import { UseModal } from "../utilities/Modal";
@@ -17,6 +17,7 @@ export const Login = () => {
     const emailInput = useRef();
     const passwordInput = useRef();
     const navigate = useNavigate();
+    const {currentUser} = useAuth();
     const {loginUser, loginWithGoogle} = useAuth();
     const [verifyEmailMsg, setVerifyEmailMsg] = useState(null);
 
@@ -78,6 +79,9 @@ export const Login = () => {
     };
     
     return (
+        <>
+        {currentUser ? <Navigate to={'/'} replace/>
+        :
         <div id="login">
             {verifyEmailMsg ? <UseModal title="Verify Email!" body={verifyEmailMsg} buttonText='Close' route="/Login"/> : null}
             <h2>Login</h2>
@@ -108,5 +112,7 @@ export const Login = () => {
                 <div id="to-login-signup">Don't have an account yet? Register<Link className="to-login-signup" to="/Signup">Here</Link></div>
             </form>
         </div>
+        }
+        </>
     );
 };

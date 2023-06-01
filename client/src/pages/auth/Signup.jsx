@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import { CSpinner } from "@coreui/react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ErrorBox } from "../utilities/Error";
 import { UseModal } from "../utilities/Modal";
 
 export const SignUp = () => {
+    const {currentUser} = useAuth();
     const [loading, setLoading] = useState(false);
     const [signupEmail,setSignupEmail] = useState('');
     const [signupPassword,setSignupPassword] = useState('');
@@ -14,6 +15,7 @@ export const SignUp = () => {
     const emailInput = useRef();
     const passwordInput = useRef();
     const {registerUser} = useAuth();
+    const navigate = useNavigate();
     const [verifyEmailMsg, setVerifyEmailMsg] = useState(null);
 
     const togglePassword = () => {
@@ -59,6 +61,9 @@ export const SignUp = () => {
     };
 
     return (
+        <>
+        {currentUser && !loading && !verifyEmailMsg ? <Navigate to={'/'} replace/>
+        : 
         <div id="signup">
             {verifyEmailMsg ? <UseModal title="Registration Success!" body={verifyEmailMsg} buttonText='Login' route="/Login"/> : null}
             <form id="signup-form" onSubmit={signup}>
@@ -84,5 +89,7 @@ export const SignUp = () => {
                 <div id="to-login-signup">Already a member? Login<Link className="to-login-signup" to="/Login">Here</Link></div>
             </form>
         </div>
+        }
+                </>
     );
 };
