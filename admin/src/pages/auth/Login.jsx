@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ErrorBox } from "../utilities/Error";
 import { UseModal } from "../utilities/Modal";
+import { useEffect } from "react";
 
 export const Login = () => {
     const [loginEmail,setLoginEmail] = useState('');
@@ -18,6 +19,11 @@ export const Login = () => {
     const navigate = useNavigate();
     const {loginAdmin, loginWithGoogle} = useAuth();
     const [verifyEmailMsg, setVerifyEmailMsg] = useState(null);
+    const { currentAdmin } = useAuth();
+
+    useEffect(()=>{
+        if (currentAdmin) {navigate('/');}
+    },[currentAdmin, navigate]);
 
     const togglePassword = () => {
         passwordInput.current.focus();

@@ -23,10 +23,6 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const UnprotectedRoute = ({ children, props }) => {
-    const {currentAdmin} = useAuth();
-    if (currentAdmin) { 
-        if (!props && !props.initial) { return <Navigate to='/' replace/>;}
-    }
     return children;
 };
 

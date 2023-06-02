@@ -1,9 +1,10 @@
 import { CSpinner } from "@coreui/react";
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ErrorBox } from "../utilities/Error";
 import { UseModal } from "../utilities/Modal";
+import { useEffect } from "react";
 
 export const SignUp = () => {
     const [signupEmail,setSignupEmail] = useState('');
@@ -15,6 +16,12 @@ export const SignUp = () => {
     const passwordInput = useRef();
     const {registerAdmin} = useAuth();
     const [verifyEmailMsg, setVerifyEmailMsg] = useState(null);
+    const { currentAdmin } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if (currentAdmin && !loading && !verifyEmailMsg) {navigate('/');}
+    },[currentAdmin, navigate]);
 
     const togglePassword = () => {
         passwordInput.current.focus();
