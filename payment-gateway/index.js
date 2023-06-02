@@ -126,7 +126,7 @@ const sendOrderEmail = (data,customer) => {
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
-      return {error:error};
+      throw Error('Failed to order send mail to customer');
     } else {
     }
   }); 
@@ -149,7 +149,7 @@ const updateStock = async() => {
     });
     await batch.commit(); 
   } catch (error) {
-    return {error:error};
+    throw Error('Failed to update stock during customer purchase');
   }
 };
 
@@ -176,7 +176,7 @@ const createOrder = async(customer,data) => {
     });
 
   } catch (error) {
-    return {error:error};
+    throw Error('Failed to create customer order in database');
   }
 
 };
@@ -185,10 +185,10 @@ const handleOrder = async(data) => {
   try {
     const customer = await stripe.customers.retrieve(data.customer);
     await createOrder(customer,data);
-    sendOrderEmail(data,customer);
     await updateStock();
+    sendOrderEmail(data,customer);
   } catch (err) {
-    return {error:err};
+    throw Error(err);
   }
 };
 
@@ -266,10 +266,11 @@ app.post('/stripewebhook', express.raw({type: 'application/json'}), (request, re
   eventType = event.type;
 
   if (eventType === 'checkout.session.completed') {
-    handleOrder(data)
-    .then((value)=>{
-      if(value) { return response.status(500).json({"error":"Failed to create order"})}
-    });
+    try {
+      handleOrder(data)
+    } catch (err) {
+      return response.status(500).json({error:err});
+    }
   }
   return response.status(200).json({received:true});
 
