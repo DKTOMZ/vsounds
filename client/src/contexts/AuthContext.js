@@ -110,6 +110,8 @@ export const AuthProvider = ({children}) => {
             dispatch(setAppData(response));
         });
         return unsubscribe;
+        
+    // eslint-disable-next-line
     },[]);
 
     useEffect(()=>{

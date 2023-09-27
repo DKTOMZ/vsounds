@@ -11,6 +11,8 @@ export const OrderComplete = () => {
     useEffect(()=>{
         dispatch(clearCart());
         runSnow();
+        
+    // eslint-disable-next-line
     },[]);
 
     return (

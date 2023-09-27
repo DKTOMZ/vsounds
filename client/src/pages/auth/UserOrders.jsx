@@ -25,8 +25,11 @@ export const UserOrders = () => {
         });
     };
     const dispatch = useDispatch();
+
     useEffect(()=>{
         fetchOrders();
+        
+    // eslint-disable-next-line
     },[]);
 
     const fetchOrders = async() => {

@@ -651,6 +651,7 @@ body{
     #shipping-payment {width: 60%; margin-right: 30px;}
     #shipping-summary, #payment, #cart {border: 1px solid $lgray; border-radius: 3px; padding: 20px;}
     #shipping-payment {
+        .toast { position: absolute; z-index: 4;}
         #payment .stripe-link {
             color: $lgreen;
             margin: 0 5px;

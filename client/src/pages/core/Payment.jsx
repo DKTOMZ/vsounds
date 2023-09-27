@@ -1,13 +1,16 @@
-import { CSpinner } from "@coreui/react";
+import { CSpinner, CToaster } from "@coreui/react";
+import '@coreui/coreui/dist/css/coreui.min.css';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingOption } from "../../redux/store";
 import getStripe from "../../stripe/getStripe";
 import { useAuth } from "../../contexts/AuthContext";
+import { UseToast } from "../utilities/Toast";
 
 const PaymentSummary = (props) =>{
     const shippingMethod = useSelector((state)=>state.shipping.method);
     const [loadingStripe,setLoadingStripe] = useState(false);
+    const [stripeError, setStripeError] = useState(0);
     const { currentUser } = useAuth();
     const dispatch = useDispatch();
     const cart = useSelector((state)=>state.cart);
@@ -27,6 +30,8 @@ const PaymentSummary = (props) =>{
             });
             if (response.status >= 200 && response.status <= 299) {data = await response.json();}
         } catch (error) {
+            setStripeError(<UseToast message='Error connecting to stripe' />);
+            setLoadingStripe(false);
             return console.log(error);
         }
 
@@ -36,6 +41,7 @@ const PaymentSummary = (props) =>{
 
     return (
         <div id="shipping-payment">
+            <CToaster placement="top-end" push={stripeError}/>
             <div id="shipping-summary">
                 <h3 style={{marginBottom:'10px'}}>SHIPPING METHOD</h3>
                 <div id="title-decoration" style={{marginBottom:'30px'}}></div>

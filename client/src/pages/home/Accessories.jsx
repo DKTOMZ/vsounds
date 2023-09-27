@@ -16,6 +16,8 @@ export const Accessory = () => {
 
     useEffect(()=>{
         loadData();
+        
+    // eslint-disable-next-line
     },[appData,query]);
 
     useEffect(()=>{window.scrollTo(0,0);},[pageCount]);

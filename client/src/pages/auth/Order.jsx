@@ -13,6 +13,7 @@ export const Order = () => {
 
     useEffect(()=>{
         fetchOrder();
+    // eslint-disable-next-line
     },[order]);
 
     const fetchOrder = async() => {
@@ -50,7 +51,7 @@ export const Order = () => {
                             </div>
                             <div className="desc">
                                 <div style={{marginRight:'10px'}}>IMAGE:</div>
-                                <img style={{float:'right'}} src={product.imageurl_and_colors.img} height={50} alt={product.name} width={50}/>
+                                <img style={{float:'right', objectFit:'cover'}} src={product.imageurl_and_colors.img} height={100} alt={product.name} width={100}/>
                             </div>
                             <div className="desc">
                                 <div style={{marginRight:'10px'}}>DELIVERY STATUS:</div>
@@ -61,7 +62,7 @@ export const Order = () => {
                     {order.products.map((product,index)=>{
                         return <div key={index} className="products content">
                             <div className="desc">
-                                <img src={product.imageurl_and_colors.img} alt={product.name} height={100} width={100}/>
+                                <img src={product.imageurl_and_colors.img} alt={product.name} height={150} width={150}/>
                                 <div className="text">
                                     <p>{product.name}</p>
                                     <p>${product.price}</p>

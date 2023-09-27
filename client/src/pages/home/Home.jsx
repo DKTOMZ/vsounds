@@ -46,7 +46,7 @@ export const Home  = () => {
                                 <h3>FEATURED</h3>
                             </div>
                             {featured.length > 0 ?
-                            <CCarousel controls indicators interval={3000} transition="crossfade">
+                            <CCarousel controls indicators interval={3000} transition="slide">
                                 {featured.map((value)=>{
                                         return <CCarouselItem key={value.name}>
                                             <CImage height={450} style={{filter:'brightness(60%)', objectFit:"contain"}} className="d-block w-100 cimage" src={value.imageurl_and_colors[0].img} alt={value.name} />

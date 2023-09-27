@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { CSpinner } from "@coreui/react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ErrorBox } from "../utilities/Error";
 import { UseModal } from "../utilities/Modal";
@@ -15,7 +15,6 @@ export const SignUp = () => {
     const emailInput = useRef();
     const passwordInput = useRef();
     const {registerUser} = useAuth();
-    const navigate = useNavigate();
     const [verifyEmailMsg, setVerifyEmailMsg] = useState(null);
 
     const togglePassword = () => {

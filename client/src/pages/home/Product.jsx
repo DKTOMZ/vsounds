@@ -21,8 +21,10 @@ export const Product = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
+    // eslint-disable-next-line
     useEffect(()=>{loadData();},[appData,query]);
 
+    // eslint-disable-next-line
     useEffect(()=>{checkCart();},[cart,activeImgColor]);
 
     const loadData = () => {
