@@ -10,3 +10,9 @@ This app authenticates admins and offers access to a dashboard for them to view 
 - Recent orders
 - Add, view and update product information for each product
 - Dispatch and deliver pending orders
+
+![image](https://github.com/DKTOMZ/vsounds/assets/34268971/083e211c-9237-448f-bee1-9ed53997af37)
+
+
+![image](https://github.com/DKTOMZ/vsounds/assets/34268971/f3c8420f-5f69-468a-b392-06aa8ece83a8)
+
