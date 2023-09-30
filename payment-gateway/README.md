@@ -11,9 +11,9 @@ This code provides functionality to the client application through various endpo
 
 # Flow
 - (Receives request from vsounds client) 
-  - ->  Creates checkout params from request body 
-    - -> Makes request to stripe endpoint and returns the response (stripe url for checkout) to vsounds client
-      - -> Stripe webhook listens to checkout event completion
-        - -> Creates an order in firebase database
-          - -> Updates stock of each item ordered
-            - -> Sends order confirmation email to buyer
+->  Creates checkout params from request body 
+--> Makes request to stripe endpoint and returns the response (stripe url for checkout) to vsounds client
+---> Stripe webhook listens to checkout event completion
+----> Creates an order in firebase database
+-----> Updates stock of each item ordered
+------> Sends order confirmation email to buyer
